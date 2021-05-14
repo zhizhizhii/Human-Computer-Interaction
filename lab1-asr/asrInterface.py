@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "You can:"))
         self.label.setText(_translate("MainWindow", "Hi! How can I help?"))
         self.label_4.setText(_translate("MainWindow", "2. Take some notes by saying \"Notepad\""))
-        self.label_5.setText(_translate("MainWindow", "3. Take Baidu by saying \"Search\""))
+        self.label_5.setText(_translate("MainWindow", "3. Search on Web by saying \"Search\""))
         self.label_6.setText(_translate("MainWindow", "Click Me to say something!"))
 
     def clickedBtn(self):
@@ -123,6 +123,7 @@ class Ui_MainWindow(object):
         if guess["error"]:
             print("ERROR: {}".format(guess["error"]))
             self.label.setText(_translate("MainWindow", "Error!"))
+            self.label.setText(_translate("MainWindow", "Any other help?"))
             return
         self.label.setText(_translate("MainWindow", guess["transcription"]))
         if guess["transcription"].lower()== "Music".lower():
@@ -132,7 +133,7 @@ class Ui_MainWindow(object):
         elif guess["transcription"].lower() == "Search".lower():
             win32api.ShellExecute(0, 'open', 'https://www.baidu.com', '', '', 1)
         else:
-            win32api.ShellExecute(0, 'open', os.getcwd()+'/music/music.mp3', '','',1)
+            win32api.ShellExecute(0, 'open', 'https://github.com/zhizhizhii/Human-Computer-Interaction/tree/master/lab1-asr', '','',1)
         self.label.setText(_translate("MainWindow", "Any other help?"))
 
     def recognize_speech_from_mic(self, recognizer, microphone):
